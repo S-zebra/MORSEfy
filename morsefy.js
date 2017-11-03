@@ -184,14 +184,10 @@ function beep(freq, time){
   osc.frequency.value=freq;
   osc.connect(dest);
   osc.start();
-  light.style.backgroundColor="#000";
-  setTimeout(recoverLight, time);
   stoptime=(time/1000)+audioCtx.currentTime;
   osc.stop(stoptime);
 }
-function recoverLight() {
-  light.style.backgroundColor="#fff";
-}
+
 function prepareOscillator(){
   audioCtx = new window.webkitAudioContext();
   dest = audioCtx.destination;
