@@ -1,0 +1,58 @@
+* {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size: 120%;
+  text-align: center;
+}
+body{
+  padding: 0;
+  margin: 0;
+}
+h1 {
+  font-size: 28pt;
+  background-color: green;
+  color:white;
+  margin-top: 0;
+  padding-left: 5px;
+}
+#description{
+  margin-top: 5px;
+}
+#inputform{
+  padding-bottom: 3px;
+  border-bottom: 2px gray solid;
+}
+#inputbox{
+  font-size: 16pt;
+}
+.label-radio{
+  font-size: 14pt;
+}
+#dtmifybtn{
+  font-size: 18pt;
+  cursor: pointer;
+}
+
+#indicatorbox{
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 350px;
+}
+#hatsuon-label{
+  margin-bottom: 0;
+}
+.indicator{
+  text-align: center;
+}
+#curchar{
+  font-size: 56pt;
+}
+#curcharnumbox{
+  font-size: 18pt;
+}
+#curfreqbox{
+  font-size: 20pt;
+}
+.small-chars{
+  color: darkgray;
+  font-size: 24pt;
+}

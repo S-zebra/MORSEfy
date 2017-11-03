@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8"/>
+    <title>MORSEfy</title>
+    <script type="text/javascript" src="./morsefy.js"></script>
+    <link rel="stylesheet" href="./style.css"/>
+  </head>
+  <body>
+    <h1>MORSEfy</h1>
+    <p id="description">欧文・和文をモールス符号に変換するおもちゃです。<br/>下の欄に文字を入れてください。</p>
+    <form id="inputform">
+      <textarea id="inputbox" rows="3" cols="30"></textarea>
+      <br/>
+      <input type="radio" class="radio" name="type" value="jp" id="radio-jp" disabled="disabled"><label for="radio-jp" class="label-radio">和文</label>
+      <input type="radio" class="radio" name="type" value="jp" id="radio-en" checked="checked"><label for="radio-en" class="label-radio">欧文</label>
+      <input type="button" id="morsefybtn" value="MORSEfy!"/>
+    </form>
+    <div id="indicatorbox">
+      <p id="hatsuon-label">現在，発音中の文字: </p>
+      <div class="indicator" id="curcharbox">
+        <span id="beforechar" class="small-chars"></span>
+        <span id="curchar">-</span>
+        <span id="afterchar" class="small-chars"></span>
+      </div>
+      <div class="indicator" id="curcharnumbox">(--)</div>
+    </div>
+    <div id="debug">&nbsp;</div>
+  </body>
+</html>
