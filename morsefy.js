@@ -152,6 +152,8 @@ function beep_text() {
     show_after_char(text.charAt(char_pos+1).replace(/[ぁ-ん]/g,toKatakana));
     char_pos++;
     setTimeout(beep_text, len_per_char+len_char_stop);　//通常
+  }else{
+    show_after_char("");
   }
 }
 
