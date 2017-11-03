@@ -1,5 +1,6 @@
 * {
   font-family: Roboto, "Helvetica Neue", sans-serif;
+  color: #303030;
   font-size: 120%;
   text-align: center;
 }
@@ -24,7 +25,7 @@ h1 {
 #inputbox{
   font-size: 16pt;
 }
-.label-radio{
+.form-label, .dropdown{
   font-size: 14pt;
 }
 #dtmifybtn{
@@ -55,4 +56,8 @@ h1 {
 .small-chars{
   color: darkgray;
   font-size: 24pt;
+}
+#light{
+  width: 1360px;
+  height: 700px;
 }
