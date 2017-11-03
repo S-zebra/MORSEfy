@@ -16,36 +16,36 @@ window.addEventListener("load", function (e){
 },false);
 
 var MORSE_EN={
-"0":"lllll",  "1":"sllll",  "2":"sslll",  "3":"sssll",  "4":"ssssl",
-"5":"sssss",  "6":"lssss",  "7":"llsss",  "8":"lllss",  "9":"lllls",
-"A":"sl",     "B":"lsss",   "C":"lsls",   "D":"lss",    "E":"s",
-"F":"ssls",   "G":"lls",    "H":"ssss",   "I":"ss",     "J":"slll",
-"K":"lsl",    "L":"slss",   "M":"ll",     "N":"ls",     "O":"lll",
-"P":"slls",   "Q":"llsl",   "R":"sls",    "S":"sss",    "T":"l",
-"U":"ssl",    "V":"sssl",   "W":"sll",    "X":"lssl",   "Y":"lsll", "Z":"llss",
-".":"slslsl", ",":"llssll", "?":"ssllss", "!":"lslsll", "-":"lssssl", "/":"lssls",
-"@":"sllsls", "(":"lslls",  ")": "lsllsl"
+  "0":"lllll",  "1":"sllll",  "2":"sslll",  "3":"sssll",  "4":"ssssl",
+  "5":"sssss",  "6":"lssss",  "7":"llsss",  "8":"lllss",  "9":"lllls",
+  "A":"sl",     "B":"lsss",   "C":"lsls",   "D":"lss",    "E":"s",
+  "F":"ssls",   "G":"lls",    "H":"ssss",   "I":"ss",     "J":"slll",
+  "K":"lsl",    "L":"slss",   "M":"ll",     "N":"ls",     "O":"lll",
+  "P":"slls",   "Q":"llsl",   "R":"sls",    "S":"sss",    "T":"l",
+  "U":"ssl",    "V":"sssl",   "W":"sll",    "X":"lssl",   "Y":"lsll", "Z":"llss",
+  ".":"slslsl", ",":"llssll", "?":"ssllss", "!":"lslsll", "-":"lssssl", "/":"lssls",
+  "@":"sllsls", "(":"lslls",  ")": "lsllsl"
 };
 
 var MORSE_JP={
-"0":"lllll",  "1":"sllll",  "2":"sslll",  "3":"sssll",  "4":"ssssl",
-"5":"sssss",  "6":"lssss",  "7":"llsss",  "8":"lllss",  "9":"lllls",
-"い": "sl",    "ろ": "slsl",  "は": "lsss",  "に": "lsls",
-"ほ": "lss",   "へ": "s",     "と": "sslss", "ち": "ssls",
-"り": "lls",   "ぬ": "ssss",  "る": "lslls", "を": "slll",
-"わ": "lsl",   "か": "slss",  "よ": "ll",    "た": "ls",
-"れ": "lll",   "そ": "lls",   "つ": "slls",  "ね": "llsl",
-"な": "sls",   "ら": "sss",   "む": "l",     "う": "ssl",
-"ゐ": "slssl", "の": "ssll",  "お": "slsss", "く": "sssl",
-"や": "sll",   "ま": "lssl",  "け": "lsll",  "ふ": "llss",
-"こ": "llll",  "え": "lslll", "て": "slsll", "あ": "llsll",
-"さ": "lslsl", "き": "lslss", "ゆ": "lssll", "め": "lsssl",
-"み": "sslsl", "し": "llsls", "ゑ": "sllss", "ひ": "llssl",
-"も": "lssls", "せ": "sllls", "す": "lllsl", "ん": "slsls",
-"゛": "ss",    "゜": "sslls", "ー": "sllsl", "、": "slslsl",
-"\n": "slslss", 
-"（": "lsllsl", "）": "slssls",
-"(": "lsllsl",  ")": "slssls"
+  "0":"lllll",  "1":"sllll",  "2":"sslll",  "3":"sssll",  "4":"ssssl",
+  "5":"sssss",  "6":"lssss",  "7":"llsss",  "8":"lllss",  "9":"lllls",
+  "い": "sl",    "ろ": "slsl",  "は": "lsss",  "に": "lsls",
+  "ほ": "lss",   "へ": "s",     "と": "sslss", "ち": "ssls",
+  "り": "lls",   "ぬ": "ssss",  "る": "lslls", "を": "slll",
+  "わ": "lsl",   "か": "slss",  "よ": "ll",    "た": "ls",
+  "れ": "lll",   "そ": "lls",   "つ": "slls",  "ね": "llsl",
+  "な": "sls",   "ら": "sss",   "む": "l",     "う": "ssl",
+  "ゐ": "slssl", "の": "ssll",  "お": "slsss", "く": "sssl",
+  "や": "sll",   "ま": "lssl",  "け": "lsll",  "ふ": "llss",
+  "こ": "llll",  "え": "lslll", "て": "slsll", "あ": "llsll",
+  "さ": "lslsl", "き": "lslss", "ゆ": "lssll", "め": "lsssl",
+  "み": "sslsl", "し": "llsls", "ゑ": "sllss", "ひ": "llssl",
+  "も": "lssls", "せ": "sllls", "す": "lllsl", "ん": "slsls",
+  "゛": "ss",    "゜": "sslls", "ー": "sllsl", "、": "slslsl",
+  "\n": "slslss", 
+  "（": "lsllsl", "）": "slssls",
+  "(": "lsllsl",  ")": "slssls"
 };
 
 //速度たち
@@ -59,7 +59,7 @@ var audioCtx, dest;
 
 var char_pos=0;
 var char, text;
-var jp_mode=false;
+var jp_mode=true;
 
 function calcSpeed(mode, value) {
   /*
@@ -103,6 +103,9 @@ function sanitize(text) {
 function toHiragana(c) {
   return String.fromCharCode(c.charCodeAt(0)-0x60); 
 }
+function toKatakana(c) {
+  return String.fromCharCode(c.charCodeAt(0)+0x60); 
+}
 function removeSonant(c) {
   return String.fromCharCode(c.charCodeAt(0)-1)+"゛";
 }
@@ -143,10 +146,10 @@ function beep_text() {
   beep_single_char(char);
 
   if(char_pos>=1){
-    show_before_char(text.charAt(char_pos-1));
+    show_before_char(text.charAt(char_pos-1).replace(/[ぁ-ん]/g,toKatakana));
   }
   if(char_pos<text.length-1){
-    show_after_char(text.charAt(char_pos+1));
+    show_after_char(text.charAt(char_pos+1).replace(/[ぁ-ん]/g,toKatakana));
     char_pos++;
     setTimeout(beep_text, len_per_char+len_char_stop);　//通常
   }
@@ -164,7 +167,7 @@ function beep_single_char(char) {
     morse=MORSE_EN[char];
   }
   curnote=morse.charAt(note_pos); //現在の1ノート
-  show_char(char.replace(/\n/,"」"), morse.replace(/s/g,"・").replace(/l/g, "―"));
+  show_char(char.replace(/[ぁ-ん]/g,toKatakana).replace(/\n/,"」"), morse.replace(/s/g,"・").replace(/l/g, "―"));
   beep_single_note();
 }
 
