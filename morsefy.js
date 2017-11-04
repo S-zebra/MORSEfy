@@ -1,18 +1,26 @@
-var spdUnitBox, spdValBar, spdLabel;
+var spdValBar, spdLabel, freqValBar, freqLabel;
 var radio_en, radio_jp;
-var light_box;
 
 window.addEventListener("load", function (e){
+  var default_speed=30;
+  var default_frequency=3000;
   document.getElementById("morsefybtn").addEventListener("click", sound, false);
-
   radio_en=document.getElementById("radio-en");
   radio_jp=document.getElementById("radio-jp");
-  light_box=document.getElementById("light");
   radio_en.addEventListener("change", changeLanguage, false);
   radio_jp.addEventListener("change", changeLanguage, false);
 
+  spdValBar=document.getElementById("speed-bar");
+  spdValBar.addEventListener("input", onChangeSpeed, false);
+  spdLabel=document.getElementById("speed-label");
+
+  freqValBar=document.getElementById("freq-bar");
+  freqValBar.addEventListener("input", onChangeFrequency, false);
+  freqLabel=document.getElementById("freq-label");
+
   prepareOscillator();
-  calcSpeed("wpm", 30);
+  setSpeed(default_speed);
+  setFrequency(default_frequency);
 },false);
 
 var MORSE_EN={
@@ -52,7 +60,7 @@ var MORSE_JP={
 var lengths={};
 var len_note_stop, len_char_stop, len_word_stop;
 
-var freq=750;
+var freq=3000;
 
 //音声ミックス先
 var audioCtx, dest;
@@ -61,7 +69,7 @@ var char_pos=0;
 var char, text;
 var jp_mode=true;
 
-function calcSpeed(mode, value) {
+function setSpeed(value) {
   /*
     WPM: 1分に50短点が何回出るか？
     1分=60,000ms
@@ -74,9 +82,6 @@ function calcSpeed(mode, value) {
     CPM: WPM*5
   */
   lengths["s"]=60000/(50*value);
-  if(mode=="cpm"){
-    lengths["s"]/=5;
-  }
   lengths["l"]=lengths["s"]*3; //lはsの3倍分の長さ
   //音の区切り
   len_note_stop=lengths["s"];
@@ -84,6 +89,16 @@ function calcSpeed(mode, value) {
   len_char_stop=lengths["s"]*3;
   //語の区切り
   len_word_stop=lengths["s"]*7;
+  
+  //表示更新
+  spdValBar.value=value;
+  spdLabel.innerText=value;
+}
+
+function setFrequency(frequency) {
+  freq=frequency;
+  freqValBar.value=frequency;
+  freqLabel.innerText=frequency;
 }
 
 function sanitize(text) {
@@ -197,12 +212,19 @@ function prepareOscillator(){
   audioCtx = new window.webkitAudioContext();
   dest = audioCtx.destination;
 }
+
 function changeLanguage(e) {
   if(e.srcElement.value=="jp"){
     jp_mode=true;
   }else{
     jp_mode=false;
   }
+}
+function onChangeSpeed(e) {
+  setSpeed(parseInt(e.srcElement.value));
+}
+function onChangeFrequency(e) {
+  setFrequency(parseInt(e.srcElement.value));
 }
 
 function show_char(char, char_num) {
@@ -215,11 +237,9 @@ function show_before_char(char) {
 function show_after_char(char) {
   document.getElementById("afterchar").innerText=char;
 }
-
 function show_freqs(freqs_text){
   document.getElementById("curfreqbox").innerText=freqs_text;
 }
-
 function dispLog(txt){
   document.getElementById("debug").innerText+=txt+"\n";
 }

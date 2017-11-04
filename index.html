@@ -14,10 +14,20 @@
       <br/>
       <input type="radio" class="radio" name="type" value="jp" id="radio-jp" checked="checked"/ ><label for="radio-jp" class="form-label">日本語</label>
       <input type="radio" class="radio" name="type" value="en" id="radio-en"><label for="radio-en" class="form-label">English</label>
+      <br/>
+      <span id="speed-group">
+        速度:&nbsp;<input type="range" id="speed-bar" min="4" max="60" />
+        <span id="speed-label"></span>&nbsp;WPM
+      </span>
+      &nbsp;
+      <span id="freq-group">
+        周波数:&nbsp;<input type="range" id="freq-bar" min="100" max="20000" />
+        <span id="freq-label"></span>&nbsp;Hz
+      </span>
       <input type="button" id="morsefybtn" value="MORSEfy!"/>
     </form>
     <div id="indicatorbox">
-      <p id="hatsuon-label">現在，発音中の文字: </p>
+      <p id="hatsuon-label">現在, 発音中の文字: </p>
       <div class="indicator" id="curcharbox">
         <span id="beforechar" class="small-chars"></span>
         <span id="curchar">-</span>

@@ -1,7 +1,7 @@
 * {
   font-family: Roboto, "Helvetica Neue", sans-serif;
   color: #303030;
-  font-size: 120%;
+  font-size: 110%;
   text-align: center;
 }
 body{
@@ -28,7 +28,7 @@ h1 {
 .form-label, .dropdown{
   font-size: 14pt;
 }
-#dtmifybtn{
+#morsefybtn{
   font-size: 18pt;
   cursor: pointer;
 }
