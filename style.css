@@ -47,6 +47,9 @@ h1 {
 #curchar{
   font-size: 56pt;
 }
+#curcharbox{
+  vertical-align: middle;
+}
 #curcharnumbox{
   font-size: 18pt;
 }
@@ -56,4 +59,12 @@ h1 {
 .small-chars{
   color: darkgray;
   font-size: 24pt;
+}
+#light{
+  margin-top: 20px;
+  display: inline-block;
+  width:50px;
+  height:50px;
+  background-color: blue;
+  visibility: hidden;
 }

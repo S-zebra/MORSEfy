@@ -1,9 +1,10 @@
 var spdValBar, spdLabel, freqValBar, freqLabel;
 var radio_en, radio_jp;
+var lightBox;
 
 window.addEventListener("load", function (e){
-  var default_speed=30;
-  var default_frequency=3000;
+  var default_speed=15;
+  var default_frequency=1240;
   document.getElementById("morsefybtn").addEventListener("click", sound, false);
   radio_en=document.getElementById("radio-en");
   radio_jp=document.getElementById("radio-jp");
@@ -18,6 +19,7 @@ window.addEventListener("load", function (e){
   freqValBar.addEventListener("input", onChangeFrequency, false);
   freqLabel=document.getElementById("freq-label");
 
+  lightBox=document.getElementById("light");
   prepareOscillator();
   setSpeed(default_speed);
   setFrequency(default_frequency);
@@ -204,21 +206,23 @@ function beep(freq, time){
   osc.frequency.value=freq;
   osc.connect(dest);
   osc.start();
+  setLight(time);
   stoptime=(time/1000)+audioCtx.currentTime;
   osc.stop(stoptime);
 }
-
+function setLight(time) {
+  lightBox.style.visibility="visible";
+  setTimeout(()=>{
+    lightBox.style.visibility="hidden";
+  }, time);
+}
 function prepareOscillator(){
   audioCtx = new window.webkitAudioContext();
   dest = audioCtx.destination;
 }
 
 function changeLanguage(e) {
-  if(e.srcElement.value=="jp"){
-    jp_mode=true;
-  }else{
-    jp_mode=false;
-  }
+  jp_mode=(e.srcElement.value=="jp");
 }
 function onChangeSpeed(e) {
   setSpeed(parseInt(e.srcElement.value));
